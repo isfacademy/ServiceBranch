@@ -1,0 +1,39 @@
+﻿@model List<string>
+<h2>Import</h2>
+
+@{
+    ViewBag.Title = "Import";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @*ملف *@
+            @Html.Label("Excel File", null, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <input type="file" name="importFile" id="importFile" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="إضافة" class="btn btn-lg btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Styles {
+}
+
+@section Scripts {
+}
+
+
+
+

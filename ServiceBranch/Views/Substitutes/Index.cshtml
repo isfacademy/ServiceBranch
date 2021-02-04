@@ -1,0 +1,177 @@
+﻿@model ServiceBranch.Models.ViewModel.SubstitueVM
+@using ServiceBranch.Controllers
+@{
+    ViewData["Title"] = "البحث";
+}
+
+@* DATE FILTERING *@
+
+@* END DATE FILTERING *@
+
+
+<div class="container">
+    <section class="courses-index">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="coursesTitle text-center m-3">المناوبين</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+
+                <div class="container">
+                    <section class="courses-index">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <form asp-action="Index" class="needs-validation" novalidate>
+                                @*{*@
+
+                                @*@Html.AntiForgeryToken()*@
+
+                                <hr />
+                                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                <div class="form-group row">
+                                    <label class="control-label">من</label>
+                                    <div class="col-md-3">
+                                        <select asp-for="@Model.StartYear" class="form-control" asp-items="ViewBag.StartYear"></select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select asp-for="@Model.StartMonth" class="form-control" asp-items="ViewBag.StartMonth"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label">إلى</label>
+                                    <div class="col-md-3">
+                                        <select asp-for="@Model.EndYear" class="form-control" asp-items="ViewBag.EndYear"></select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select asp-for="@Model.EndMonth" class="form-control" asp-items="ViewBag.EndMonth"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label" asp-for="@Model.Category.Name"></label>
+                                    <div class="col-md-3">
+                                        <select asp-for="@Model.CategoryId" class="form-control" asp-items="ViewBag.Category"></select>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <input type="submit" value="اختيار" class="btn btn-outline-primary" />
+                                    </div>
+                                </div>
+
+                                @*}*@
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row mr-3">
+                <div class="col-md-1 Vacation">
+                </div>
+                <div class="col-md-2">عطلة رسمية</div>
+
+        </div>
+
+        <div class="col-md-12">
+            <table id="SubstituteTable" class="display nowrap table table-striped table-bordered dt-responsive" style="width:100%">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">
+                            @Html.DisplayNameFor(model => model.Substitutes.First().Day)
+                        </th>
+                        <th style="text-align: center;">
+                            @Html.DisplayNameFor(model => model.Substitutes.First().SubstituteDate)
+                        </th>
+                        <th style="text-align: center;">
+                            @Html.DisplayNameFor(model => model.Substitutes.First().FullName)
+                        </th>
+                        <th style="text-align: center;">
+                            @Html.DisplayNameFor(model => model.Substitutes.First().MilitaryNumber)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.IsVacation)
+                        </th>*@
+                        <th style="text-align: center;">
+                            @Html.DisplayNameFor(model => model.Category.Name)
+                        </th>
+                        @*<th></th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Substitutes)
+                    {
+                        string trcolor = "";
+                        if (item.IsVacation)
+                        {
+                            trcolor = "Vacation";
+                        }
+                        <tr class="@trcolor">
+                            <td style="text-align: center;">
+                                @Html.DisplayFor(modelItem => item.Day)
+                            </td>
+                            <td style="text-align: center;">
+                                @Html.DisplayFor(modelItem => item.SubstituteDate)
+                            </td>
+                            <td style="text-align: center;">
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td style="text-align: center;">
+                                @Html.DisplayFor(modelItem => item.MilitaryNumber)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.IsVacation)
+                            </td>*@
+                            <td style="text-align: center;">
+                                @Html.DisplayFor(modelItem => item.Category.Name)
+                            </td>
+                            @*<td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>*@
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+
+@section Styles {
+    <link href="~/css/DataTables/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/css/DataTables/responsive.dataTables.min.css" rel="stylesheet" />
+    <link href="~/css/DataTables/buttons.dataTables.min.css" rel="stylesheet" />
+    <style>
+        select.form-control:not([size]):not([multiple]) {
+            height: calc(2.55rem + 2px);
+        }
+    </style>
+}
+@section Scripts {
+    <script src="~/js/DataTables/jquery.dataTables.min.js"></script>
+    <script src="~/js/DataTables/dataTables.responsive.min.js"></script>
+    <script src="~/js/DataTables/dataTables.buttons.min.js"></script>
+    @*<script src="~/js/DataTables/dataTables.Ellipsis.js"></script>*@
+    <script>
+
+        $(document).ready(function () {
+            $('#SubstituteTable').DataTable({
+                responsive: true,
+                aaSorting: [],
+                language: DataTablesLang,
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 10001, targets: 3 },
+                    { responsivePriority: 2, targets: -2 }
+                ],
+
+            });
+        });
+
+    </script>
+}

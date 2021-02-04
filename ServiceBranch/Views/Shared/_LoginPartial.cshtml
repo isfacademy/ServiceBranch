@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+
+
+<ul class="HomeMenu navbar-nav flex-grow-1">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link SubstituteIndexLink" asp-area="" asp-controller="Substitutes" asp-action="Index">المناوبين </a>
+        </li>
+
+
+    }
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        if (User.IsInRole("SuperAdmin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link LogoutLink" asp-controller="Administration" asp-action="ListOfRoles">Administration </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link LogoutLink" href="/Identity/Account/Register">Register </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ImportLink" asp-area="" asp-controller="Substitutes" asp-action="Import">Import </a>
+            </li>
+        }
+        if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link ImportLink" asp-area="" asp-controller="Substitutes" asp-action="Import">Import </a>
+            </li>
+        }
+
+    }
+</ul>
+
+<ul class="HomeMenu navbar-nav flex-grow-1 AccountManageIndex ">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        @if (User.IsInRole("SuperAdmin"))
+        {
+            <li class="nav-item ">
+                <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> @User.Identity.Name </a>
+                @*   <a class="nav-link text-lightblue" href="#" title="Manage"> @User.Identity.Name</a>*@
+            </li>
+        }
+        <li class="nav-item">
+            <a class="nav-link LogoutLink" asp-area="" asp-controller="Account" asp-action="Logout">تسجيل الخروج </a>
+        </li>
+    }
+</ul>
