@@ -21,12 +21,12 @@ namespace ServiceBranch.Controllers
             this._signInManager = signInManager;
         }
 
-       /* [HttpGet]
+        [HttpGet]
         [AllowAnonymous]
         public IActionResult Login()
         {
             return View();
-        }*/
+        }
 
         [HttpPost]
         [AllowAnonymous]
