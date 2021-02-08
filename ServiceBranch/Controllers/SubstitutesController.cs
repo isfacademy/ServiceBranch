@@ -52,7 +52,7 @@ namespace ServiceBranch.Controllers
             SVM.EndYear = CurrentDate.Year;
             SVM.EndMonth = CurrentDate.Month;
             SVM.CategoryId = 5;
-            SVM.Substitutes = _context.Substitutes.Where(m => m.SubstituteDate.Month == CurrentDate.Month).OrderBy(m => m.SubstituteDate).Include(s => s.Category).ToList();
+            SVM.Substitutes = _context.Substitutes.Where(m => m.SubstituteDate.Year ==CurrentDate.Year && m.SubstituteDate.Month == CurrentDate.Month).OrderBy(m => m.SubstituteDate).Include(s => s.Category).ToList();
             return View(SVM);
         }
 
@@ -81,11 +81,11 @@ namespace ServiceBranch.Controllers
             {
                 if (SVM.CategoryId == 5)
                 {
-                    SVM.Substitutes = _context.Substitutes.Where(m => m.SubstituteDate.Month == CurrentDate.Month).OrderBy(c => c.SubstituteDate).Include(s => s.Category).ToList();
+                    SVM.Substitutes = _context.Substitutes.Where(m => m.SubstituteDate.Year == CurrentDate.Year && m.SubstituteDate.Month == CurrentDate.Month).OrderBy(c => c.SubstituteDate).Include(s => s.Category).ToList();
                 }
                 else
                 {
-                    SVM.Substitutes = _context.Substitutes.Where(m => m.SubstituteDate.Month == CurrentDate.Month && m.CategoryId == SVM.CategoryId).OrderBy(c => c.SubstituteDate).Include(s => s.Category).ToList();
+                    SVM.Substitutes = _context.Substitutes.Where(m => m.SubstituteDate.Year == CurrentDate.Year && m.SubstituteDate.Month == CurrentDate.Month && m.CategoryId == SVM.CategoryId).OrderBy(c => c.SubstituteDate).Include(s => s.Category).ToList();
                 }
                 SVM.StartYear = CurrentDate.Year;
                 SVM.StartMonth = CurrentDate.Month;
