@@ -1,0 +1,150 @@
+.displayrequesttitle {
+    text-align: center;
+}
+
+#ui-datepicker-div {
+    z-index: 999 !important;
+}
+
+.ui-datepicker {
+    width: auto;
+    color: #4B6C9E;
+}
+
+    .ui-datepicker table {
+        width: 100%;
+        font-size: .75em !important;
+    }
+
+
+.ui-icon {
+    text-indent: unset !important;
+}
+
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+    top: 37% !important;
+}
+
+.ui-datepicker .ui-state-default,
+.ui-datepicker .ui-widget-content .ui-state-default,
+.ui-datepicker .ui-widget-header .ui-state-default {
+    color: #4B6C9E;
+}
+
+.ui-datepicker .ui-datepicker-calendar span {
+    color: #4B6C9E;
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+    display: initial;
+    position: initial;
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    top: 5px;
+    cursor: pointer;
+}
+
+.ui-datepicker select {
+    text-indent: 40%;
+}
+.ui-datepicker .ui-state-default,
+.ui-datepicker .ui-widget-content .ui-state-default,
+.ui-datepicker .ui-widget-header .ui-state-default {
+    text-align: center;
+}
+
+
+
+.navigator_green_month {
+    direction: ltr;
+}
+
+.month_traditional_event {
+    text-align: center;
+    box-shadow: 3px 3px 3px 3px;
+}
+
+.month_traditional_cornerright_inner {
+    display: none !important;
+}
+
+.month_traditional_header_inner {
+    background: -webkit-gradient( linear, left top, left bottom, from(#777), to(#666)) !important;
+    color: #ffffff !important;
+}
+
+#calHolder > div:last-child {
+    display: none !important;
+}
+
+.month_traditional_corner {
+    height: 0px !important;
+}
+
+.month_traditional_main {
+    direction: ltr;
+}
+
+.month_traditional_event .month_traditional_event_inner {
+    /*background:unset !important;*/
+    text-align: center;
+    font-weight: 600;
+}
+
+#monthName {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+#ui-datepicker-div {
+    z-index: 999 !important;
+}
+
+.bubbleContainer {
+    direction: rtl;
+    font-size: 16px;
+}
+
+    .bubbleContainer td {
+        vertical-align: top;
+    }
+
+
+.sidebar {
+    min-width: 265px;
+}
+
+.container-rtl {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+}
+
+div[class="invalid-feedback"] {
+    font-size: 14px;
+}
+
+select.form-control.is-valid, .was-validated select.form-control:valid {
+    background-position: center right calc(1.1em + .1875rem);
+}
+
+.is-visually-hidden {
+    display: none;
+}
+
+
+.Vacation {
+    background-color: lightcoral !important;
+}
+
+.row .WeekEnd, .row .Vacation {
+    width: 18px;
+    height: 18px;
+}
